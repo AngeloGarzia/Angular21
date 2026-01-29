@@ -1,0 +1,32 @@
+<div class="container">
+    <h2>Liste Produits</h2>
+    <a routerLink="/product/create" class="btn btn-success mb-3">Ajouter Produit</a>
+
+    @if (products.length === 0) {
+    <p>Aucun produit. <a routerLink="/product/create">Créer le premier !</a></p>
+    } @else {
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (product of products; track product.id) {
+            <tr>
+                <td>{{product.ProductName}}</td>
+                <td>{{product.ProductDescription}}</td>
+                <td>{{product.ProductPrice}}€</td>
+                <td>
+                    <a [routerLink]="['/product/edit', product.id]" class="btn btn-primary btn-sm">Edit</a>
+                    <button class="btn btn-danger btn-sm ms-1" (click)="delete(product.id)">Delete</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    }
+</div>

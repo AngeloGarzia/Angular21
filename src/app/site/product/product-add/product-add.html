@@ -1,0 +1,55 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" (ngSubmit)="onSubmit()" novalidate>
+      <!-- Product Name (déjà bon) -->
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">Product Name</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" formControlName="ProductName">
+          @if (angForm.controls['ProductName']?.invalid && 
+                (angForm.controls['ProductName']?.dirty || angForm.controls['ProductName']?.touched)) {
+            <div class="alert alert-danger mt-1">
+              @if (angForm.controls['ProductName']?.errors?.['required']) { <div>Required.</div> }
+              @if (angForm.controls['ProductName']?.errors?.['maxLength']) { <div>Max 50 chars.</div> }
+            </div>
+          }
+        </div>
+      </div>
+      <!-- Product Description -->
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">Product Description</label>
+        <div class="col-md-8">
+          <textarea class="form-control" rows="7" formControlName="ProductDescription"></textarea>
+          @if (angForm.controls['ProductDescription']?.invalid && 
+                (angForm.controls['ProductDescription']?.dirty || angForm.controls['ProductDescription']?.touched)) {
+            <div class="alert alert-danger mt-1">Description is required.</div>
+          }
+        </div>
+      </div>
+      <!-- Product Price -->
+      <div class="form-group row">
+        <label class="col-md-4 col-form-label">Product Price</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" formControlName="ProductPrice">
+          @if (angForm.controls['ProductPrice']?.invalid && 
+                (angForm.controls['ProductPrice']?.dirty || angForm.controls['ProductPrice']?.touched)) {
+            <div class="alert alert-danger mt-1">
+              @if (angForm.controls['ProductPrice']?.errors?.['required']) { <div>Required.</div> }
+              @if (angForm.controls['ProductPrice']?.errors?.['pattern']) { <div>Format: 12.34</div> }
+            </div>
+          }
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-8 offset-md-4">
+          <button type="submit" class="btn btn-primary" 
+                  [disabled]="angForm.invalid">
+            Create Product
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
