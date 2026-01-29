@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef,Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Searchmovie } from '../services/searchmovie';
 import { FormValidators } from '../form-validators';
@@ -18,8 +18,9 @@ export class Searchform implements OnInit {
   results: any;
   errors: string = "";
 
-  constructor(private fb: FormBuilder,
-    private searchMovie: Searchmovie) { }
+  constructor(private fb: FormBuilder,private searchMovie: Searchmovie,private cdr:ChangeDetectorRef) { }
+  
+  
   ngOnInit() {
     let titlePattern = /^[a-zA-Z0-9\s,\\.]+$/;
     let yearPattern = /^\d{4}$/;
@@ -45,10 +46,12 @@ export class Searchform implements OnInit {
       if (data['Error']) {
         that.errors = data['Error'];
         that.results = '';
+        this.cdr.detectChanges();
       }
       else {
         that.errors = '';
         that.results = data;
+        this.cdr.detectChanges();
       }
     }
     if (title)

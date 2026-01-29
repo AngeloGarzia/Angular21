@@ -17,7 +17,8 @@ export class ListDirective {
           <div class="list-group-item">
             <div class="row">
               <div class="col-md-3">
-                <img src="${movie.Poster}" class="img-fluid" alt="${movie.Title}" onerror="this.src='https://via.placeholder.com/150x200?text=No+Image'">
+                <img src="${movie.Poster}" class="img-fluid" alt="${movie.Title}" 
+                onerror="this.src='https://dummyimage.com/150x200/ccc/fff.png&text=No+Image'">
               </div>
               <div class="col-md-9">
                 <h5>${movie.Title} (${movie.Year})</h5>
