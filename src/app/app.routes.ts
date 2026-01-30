@@ -23,6 +23,6 @@ export const routes: Routes = [
   { path: 'products', component: ProductGet },
   
   { path: '404', component: Errors },
-  { path: '**', redirectTo: '/404' }  // ✅ DERNIER
+  { path: '**', redirectTo: '/404' }  
 ];
 
