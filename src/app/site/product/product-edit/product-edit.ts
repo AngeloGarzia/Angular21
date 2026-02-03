@@ -8,7 +8,7 @@ import { Product } from '../../../model/product';
 @Component({
   selector: 'app-product-edit',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, CommonModule, RouterLink],
+  imports: [ReactiveFormsModule, FormsModule, CommonModule],
   templateUrl: './product-edit.html',
   styleUrls: ['./product-edit.css']
 })
